@@ -2,6 +2,6 @@
 
 ## TODO 
 
-- [] Make it deploy
-- [] scaffold with basic ui with mock data
-- [] setup database using (postgresql)
+- [x] Make it deploy
+- [x] scaffold with basic ui with mock data
+- [x] setup database using (postgresql)
