@@ -6,10 +6,10 @@ export default function TopNav() {
       <div>Gallery</div>
       <div>
       <SignedOut>
-        <SignInButton />
+      <SignInButton />
       </SignedOut>
       <SignedIn>
-        <UserButton />
+      <UserButton />
       </SignedIn>
       </div>
     </nav>
