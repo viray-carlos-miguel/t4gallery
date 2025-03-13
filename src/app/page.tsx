@@ -17,7 +17,10 @@ return (
   <div className="flex flex-wrap justify-items-center gap-4">
   {images.map((image) => (
     <div key = {image.id} className="w-48">
-      <Image src={image.url} objectFit = "fill" alt = {image.name} />
+      <Image src={image.url} style={{objectFit: "contain"}}
+      width={192}
+      height={192}
+      alt = {image.name} />
     {<div>{image.name}</div>}
     </div>
   ))}
