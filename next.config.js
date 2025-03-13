@@ -9,7 +9,7 @@ import "./src/env.js";
 const config = {
   images : {
 remotePatterns: [
-{hostname: "utfs.io"}
+{hostname: "ufs.sh"}
 ],
   },
   typescript: {
