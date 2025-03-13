@@ -1,40 +1,43 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
+import { eq } from "drizzle-orm";
+import { link } from "fs";
+import Link from "next/link";
 import Image from "next/image";
+import { db } from "~/server/db";
 import { getMyImages } from "~/server/queries";
+
 
 export const dynamic = "force-dynamic";
 
-async function Images() {
-  const images = await getMyImages();
+ async function Images (){
+const images = await getMyImages();
 
-  return (
-    <div className="flex flex-wrap justify-center gap-4">
-      {images.map((image) => (
-        <div key={image.id} className="w-48">
-          <Image
-            src={image.url}
-            width={192} // Equivalent to w-48 (48 * 4)
-            height={192}
-            alt={image.name}
-            className="object-cover"
-          />
-          <div className="text-center">{image.name}</div>
-        </div>
-      ))}
+return (
+  <div className="flex flex-wrap justify-items-center gap-4">
+  {images.map((image) => (
+    <div key = {image.id} className="w-48">
+      <Image src={image.url} objectFit = "fill" alt = {image.name} />
+    {<div>{image.name}</div>}
     </div>
-  );
+  ))}
+  
+</div>
+
+);
 }
-
-export default function HomePage() {
+export default async function HomePage() {
   return (
-    <main className="h-full w-full flex justify-center items-center">
-      <SignedOut>
-      <div className="text-center text-2xl">Please sign in above</div>
-      </SignedOut>
-      <SignedIn>
+    <main className="">
+           <SignedOut>
+         <div className="h-full w-full text-center text-2xl">
+           Please sign in Above
+         </div>
+       </SignedOut>
+       <SignedIn>
+         <Images />
+       </SignedIn>
 
-        <Images />
-      </SignedIn>
     </main>
   );
 }
