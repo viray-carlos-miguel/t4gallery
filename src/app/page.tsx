@@ -4,17 +4,13 @@ import { eq } from "drizzle-orm";
 import { link } from "fs";
 import Link from "next/link";
 import { db } from "~/server/db";
+import { getMyImages } from "~/server/queries";
 
 export const dynamic = "force-dynamic";
 
  async function Images (){
-  const user = await auth();
-  if (!user.userId) throw new Error("Unauthorized");
-  
-  const images = await db.query.images.findMany({
-    where: (model) => eq(model.userId, user.userId),
-    orderBy: (model, {desc}) => desc(model.id),
-  });
+const images = await getMyImages();
+
 return (
   <div className="flex flex-wrap justify-items-center gap-4">
   {images.map((image) => (
