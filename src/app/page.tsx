@@ -14,7 +14,7 @@ export const dynamic = "force-dynamic";
 const images = await getMyImages();
 
 return (
-  <div className="flex flex-wrap justify-items-center gap-4">
+  <div className="flex flex-wrap justify-center gap-4">
   {images.map((image) => (
     <div key = {image.id} className="w-48">
       <Image src={image.url} style={{objectFit: "contain"}}
