@@ -8,7 +8,7 @@ export default async function PhotoModal({
         id: string;
     };
 }) {
-    const photoId =  params.id;
+    const photoId = (await params).id;
     // Convert the string `id` into a number
     const idAsNumber = Number(photoId);
 
