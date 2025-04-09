@@ -10,19 +10,12 @@ export default async function PhotoModal({
     };
 }) {
    const photoId = (await params).id;
-   const idAsNumber = Number(photoId);
-   if (Number.isNaN(idAsNumber)) throw new Error("Invalid photo ID");
-   const image = await getImage(idAsNumber);
-
-   return(
-//    <div>
-//     <img src={image.url} alt={image.name} className="w-96"/> 
-//    <FullPageImageView id={idAsNumber}/>
-//    </div>
-<Modal>
-{/* <img src={image.url} alt={image.name} className="w-96"/>  */}
-<FullPageImageView id={idAsNumber}/>
-</Modal>
-    
-   );
+    return (
+        
+        <div className="flex h-full min-h-0 w-full min-w-0 overflow-y-hidden">
+        <Modal>
+            <FullPageImageView photoId={photoId} />
+        </Modal>
+        </div>
+    );
 }

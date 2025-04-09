@@ -14,14 +14,17 @@ async function Images() {
         images.map((image) => (
           <div key={image.id} className="flex flex-col items-center">
             <Link href={`/img/${image.id}`} className="group">
-              <Image
-                src={image.url}
-                style={{ objectFit: "cover" }}
-                width={200}
-                height={200}
-                className="rounded-lg shadow-md transition-transform group-hover:scale-105"
-                alt={image.name}
-              />
+            <div className="relative aspect-video bg-zinc-900 ">
+                <Image
+                  src={image.url}
+                  style={{ objectFit: "cover" , objectPosition: "top"}}
+                  width={200}
+                  height={200}
+                  className="rounded-lg shadow-md transition-transform group-hover:scale-105"
+                  alt={image.name}
+                />
+            </div>
+
             </Link>
             <div className="mt-2 text-center text-lg font-semibold text-gray-700">{image.name}</div>
           </div>
