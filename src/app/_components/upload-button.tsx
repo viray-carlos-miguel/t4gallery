@@ -1,5 +1,6 @@
 "use client";
 
+import { error } from "console";
 import { useRouter } from "next/navigation";
 import { usePostHog } from "posthog-js/react";
 import{ use } from "react";
@@ -83,6 +84,12 @@ const posthog = usePostHog();
                     duration: 100000,
                     id: "upload-begin",
                 });
+        },
+        onUploadError(error){
+            posthog.capture("Upload Error", {error});
+            toast.dismiss("upload-begin");
+            toast.error( <span className="text-lg">Upload failed!</span>);
+
         },
         onClientUploadComplete(){
             toast.dismiss("upload-begin");
