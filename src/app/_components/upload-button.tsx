@@ -88,7 +88,8 @@ const posthog = usePostHog();
         onUploadError(error){
             posthog.capture("Upload Error", {error});
             toast.dismiss("upload-begin");
-            toast.error( <span className="text-lg">Upload failed!</span>);
+            toast.error( <span className="text-lg">Upload Error</span>);
+            router.refresh();
 
         },
         onClientUploadComplete(){

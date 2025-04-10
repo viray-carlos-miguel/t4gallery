@@ -67,5 +67,5 @@ export async function deleteImage(id: number) {
     },
    });
    
-   redirect("/");
+   redirect("/?deleted=true");
 }

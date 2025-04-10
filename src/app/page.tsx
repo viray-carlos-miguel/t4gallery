@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SignedOut, SignedIn } from "@clerk/nextjs";
 import { getMyImages } from "~/server/queries";
 import Image from "next/image";
+import NotificationHandler from "./components/notification-handler";
 
 export const dynamic = "force-dynamic";
 
@@ -49,6 +50,7 @@ export default function HomePage() {
       </SignedOut>
 
       <SignedIn>
+        <NotificationHandler/>
         <Images />
       </SignedIn>
     </main>
